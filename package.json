@@ -4,7 +4,7 @@
   "description": "This app periodically checks apps that output sound, pauses your Spotify when your browser makes a sound!",
   "main": "main.js",
   "preferGlobal": true,
-	"bin": "./main.js",
+  "bin": "./main.js",
   "scripts": {
     "start": "node main.js"
   },
@@ -19,8 +19,8 @@
   "dependencies": {
     "dbus-next": "^0.8.2"
   },
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ilgaz/spotify-toggler"
-	}
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ilgaz/spotify-toggler"
+  }
 }
