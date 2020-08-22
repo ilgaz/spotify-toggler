@@ -15,7 +15,7 @@
     "pulseaudio"
   ],
   "author": "Ilgaz Can",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "dbus-next": "^0.8.2"
   },
