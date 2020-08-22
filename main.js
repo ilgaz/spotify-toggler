@@ -21,14 +21,15 @@ setInterval(() => {
 			const logBatch = parsePulseAudioData(val);
 
 			logBatch.forEach(log => {
-				const {name, left, right, state} = evaluatePulseAudioLog(log);
+				const {name, left, right, state, mono} = evaluatePulseAudioLog(log);
 				const sound = hasSound({ left, right, state });
 				const currentAppData = {
 					name,
 					left,
 					right,
 					state,
-					hasSound: sound
+					hasSound: sound,
+					mono
 				};
 				const findCurrentApp = app => app.name === name && app.state === state;
 
@@ -55,10 +56,12 @@ setInterval(() => {
 				}
 			}
 
-			if (
-				!isToggleInProgress && toggleStack.length
-				&& (runningApps.findIndex(app => app.name == 'firefox') == -1 || runningApps.filter(app => app.name == 'firefox' && !app.hasSound).length)
-			) {
+			const mutedFirefoxInstances = runningApps.filter(app => app.name == 'firefox' && !app.hasSound).length;
+			const noFirefoxInstances = runningApps.findIndex(app => app.name == 'firefox') == -1
+
+			if (!isToggleInProgress && toggleStack.length && (
+				noFirefoxInstances || mutedFirefoxInstances == runningApps.filter(app => app.name == 'firefox').length
+			)) {
 				isToggleInProgress = true;
 				setTimeout(async () => {
 					const firefoxInstance = runningApps.find(app => app.name == 'firefox');
