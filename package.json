@@ -1,6 +1,6 @@
 {
   "name": "spotify-toggler",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "This app periodically checks apps that output sound, pauses your Spotify when your browser makes a sound!",
   "main": "main.js",
   "preferGlobal": true,
